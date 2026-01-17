@@ -36,4 +36,41 @@ const menudeAra = (clb) => {
 
 /* 2. Soru Çözümü */
 
+let siparisDetay = (urun, adet) => {
+  return {
+    ad: urun.ad,
+    adet: adet,
+    toplam: urun.fiyat * adet
+  };
+};
+
+const siparisiIsle = (masaNo, clb) => {
+  let sonuc = [];
+  let result = [];
+
+  restoran.siparisler.forEach(siparis => {
+    if (siparis.masa === masaNo) {
+      sonuc.push(...siparis.urunler);
+    }
+  });
+
+  restoran.menuler.forEach(kategori => {
+    kategori.urunler.forEach(urun => {
+      const eslesme = sonuc.find(
+        obje => urun.id === obje.urunId
+      );
+
+      if (eslesme) {
+        result.push(
+          clb(urun, eslesme.adet)
+        );
+      }
+    });
+  });
+
+  return result;
+};
+
+console.log(siparisiIsle(5, siparisDetay));
+
 
