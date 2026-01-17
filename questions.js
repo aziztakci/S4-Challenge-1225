@@ -1,6 +1,7 @@
 /**
  SORU 1: Menüde Arama Sistemi
-Görev: Menüdeki ürünleri farklı kriterlere göre arayabilen bir higher-order function yaz.
+Görev: Menüdeki ürünleri farklı kriterlere göre arayabilen 
+bir higher-order function yaz.
 İstenenler:
 
 - menudeAra adında bir higher-order function oluştur
@@ -26,7 +27,8 @@ Görev: Siparişleri detaylı şekilde işleyen bir sistem oluştur.
 
 /**
  SORU 3: Malzeme Envanter Sistemi
-Görev: Siparişlerin malzeme tüketimini hesaplayan ve stok kontrolü yapan bir sistem yaz.
+Görev: Siparişlerin malzeme tüketimini hesaplayan ve 
+stok kontrolü yapan bir sistem yaz.
 İstenenler:
 
 - Sipariş detaylarından kullanılan malzemeleri topla
@@ -60,5 +62,6 @@ Görev: Hangi kategorilerin ne kadar satış yaptığını analiz et.
 SORU 6: Kapsamlı Restoran Dashboard
 Görev: Tüm fonksiyonları birleştirerek kapsamlı bir dashboard oluştur.
 
-ÖNEMLİ: Bu kısım yani 6. soru daha sonra istenirse yapılabilir. Yani 5. sprintten sonra bir web uygulaması üzerinden gösterilerek yapılabilir.
+ÖNEMLİ: Bu kısım yani 6. soru daha sonra istenirse yapılabilir. 
+Yani 5. sprintten sonra bir web uygulaması üzerinden gösterilerek yapılabilir.
 */
