@@ -137,13 +137,27 @@ let siparisDetay = (isim) => {
 
 const garson = (isim) => {
   const detay = siparisDetay(isim);
-  const toplamFiyat = detay.reduce((toplam,acc) => {
-    return toplam + acc.toplamFiyat;
-  } ,0);
-  const siparisSayisi = detay.length;
-  const ort = (toplamFiyat / detay.length).toFixed(2);
-  console.log(`${isim} Günlük rapor: Toplam fiyat: ${toplamFiyat}TL, Sipariş ortalaması: ${ort} TL, Sipariş sayısı: ${siparisSayisi} adet.`);
+  const toplamFiyat = detay.reduce((toplam, item) => {
+    return toplam + item.toplamFiyat;
+  }, 0);
+  const siparisSayisi = detay.reduce((toplam, item) => {
+    return toplam + item.adet;
+  }, 0);
+  const ort = siparisSayisi > 0 ? (toplamFiyat / siparisSayisi).toFixed(2) : 0;
+
+  console.log(`${isim} Günlük rapor: Toplam fiyat: ${toplamFiyat}TL, Sipariş ortalaması: ${ort} TL, Toplam ürün adedi: ${siparisSayisi} adet.`);
 };
 
-garson("Ahmet");
+garson("Ahmet"); 
 garson("Ayşe");
+
+
+let enCok = () => {
+  let garson = ();
+  garsonSiparis.forEach(obj => {
+    if (!garson)
+  })
+};
+
+/* 5. Soru Çözümü */
+
