@@ -1,29 +1,58 @@
-``tüm siparişleri kontrol dolaşıp, hangi üründen kaç tane kullanıldığını tespit eden fonksiyonu yaz.``
+``4 soru için,``
 
-``öncelikle her siparişte ürünid ve ürün adeti veren bir değişken tutulmalı,``
-``fonksiyonu şu şekilde olabilir,``
+``siparişlerden garson adını urunleri ve durumu çekip alalım.``
 
-(flatmap ve map ile)
+restoran.siparisler.flatMap(u=> u.urunler.map(urun => ({
+    garson: u.garson,
+    ...urun,
+    durum: u.durum
 
-``siparisUrunleri = urunId adet ve sipariş saatini içermekte.``
+})
+));
 
-önce verilen sipariş sonrası malzemeleri toplamak.
 
-sort metoduyla saat bilgilerini kıyaslayabiliriz,
-
-`siraliSiparis ile önceliğie göre sıraladık.`
+``garsonSiparis konsolda şu şekilde ``
 
 [
-  { urunId: 1, adet: 2, saat: "12:30" },
-  { urunId: 4, adet: 2, saat: "12:30" },
-  { urunId: 7, adet: 1, saat: "12:30" },
-  { urunId: 2, adet: 1, saat: "13:00" },
-  { urunId: 5, adet: 3, saat: "13:00" },
-  { urunId: 8, adet: 2, saat: "13:00" },
-  { urunId: 3, adet: 2, saat: "13:15" },
-  { urunId: 6, adet: 2, saat: "13:15" },
-  { urunId: 7, adet: 2, saat: "13:15" }
-]  çıktı bu şekilde.
+{
+  "garson": "Ahmet",
+  "urunId": 1,
+  "adet": 2,
+  "durum": "hazirlaniyor"
+},
+{
+  "garson": "Ahmet",
+  "urunId": 4,
+  "adet": 2,
+  "durum": "hazirlaniyor"
+},
+{
+  "garson": "Ayşe",
+  "urunId": 8,
+  "adet": 2,
+  "durum": "tamamlandi"
+}
+.....]
 
-`her birini kontrol edip menüler içinde hangi ürün olduğunu ve hangi malzemeden kaç tane kullanıldığına bakılacak. flatmap ile restoran.menuler düzleştirilip, içinde find ile yeni listeyi bir değişkene atayıp onun üzerinde çalışılabilir`
+``Buradan sonra, garson isimlerini argüman olarak alan bir fonksiyon yazabiliriz, örneğin``
+
+const siparisDetay = (isim) => {
+    ``garsonSiparis isimli değişkenden key'i garson olan ögenin value-değeri isme eşitse alıp başka bir değişkende saklayıp, bunu return edebiliriz.``
+};
+
+
+
+``ikinci aşamada garson(isim) için toplamda kaç sipariş aldığını, toplam sipariş tutarını,  ortalama sipariş tutarını (her siparişte ortalama ne kadarlık sipariş aldı) hesapla. ``  
+
+``filterMap ve find ile siparişlerin ürünlerle eşleşmesi sağlanabilir, ardından tutar hesaplanabilir.``
+
+siparisDetay("Ahmet") çıktısı konsolda bu şekilde görünecek.;
+[
+  { garson: "Ahmet", urun: "Adana Kebap", adet: 2, toplamFiyat: 360 },
+  { garson: "Ahmet", urun: "Ayran", adet: 2, toplamFiyat: 30 },
+  { garson: "Ahmet", urun: "Baklava", adet: 1, toplamFiyat: 80 },
+  { garson: "Ahmet", urun: "Tavuk Şiş", adet: 2, toplamFiyat: 300 },
+  { garson: "Ahmet", urun: "Şalgam", adet: 2, toplamFiyat: 40 },
+  { garson: "Ahmet", urun: "Baklava", adet: 2, toplamFiyat: 160 }
+]
 
